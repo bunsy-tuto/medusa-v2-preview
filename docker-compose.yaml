@@ -1,0 +1,82 @@
+version: "3.9"
+
+services:
+  # backend:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.development
+  #   ports:
+  #     - 9000:9000
+  #   restart: unless-stopped
+  #   environment:
+  #     - DATABASE_URL=postgres://postgres:postgres@db:5432/keykapstore
+  #     - REDIS_URL=redis://redis:6379
+  #   healthcheck:
+  #     test: wget --no-verbose --tries=1 --spider http://0.0.0.0:9000/app || exit 1
+  #     interval: 60s
+  #     timeout: 10s
+  #     start_period: 20s
+  #     retries: 5
+  #   depends_on:
+  #     - postgres
+  #     - redis
+  #   command: tail -f /dev/null  # This is a no-op command
+
+  database:
+    container_name: medusa_db
+    image: postgres:16.3-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: supersecret
+      POSTGRES_DB: medusav2userdb
+    volumes:
+      - postgres_data:/data/postgres
+    ports:
+      - "5432:5432"
+    expose:
+      - 5432
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    # healthcheck:
+    #   test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+    #   # test: ["CMD-SHELL", "pg_isready"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 5docker run -d -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=supersecret postgres
+
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   restart: always
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@admin.com
+  #     PGADMIN_DEFAULT_PASSWORD: secretpassword
+  #   ports:
+  #     - 5050:80
+
+  # redis:
+  #   image: redis:7.2.3-alpine
+  #   ports:
+  #     - 6379:6379
+  #   restart: unless-stopped
+  #   volumes:
+  #     - keykap-redis:/data
+
+  # meilisearch:
+  #   image: getmeili/meilisearch:v1.6
+  #   ports:
+  #     - 7700:7700
+  #   environment:
+  #     - MEILI_ENV=development
+  #     - MEILI_MASTER_KEY=meilimasterkey
+  #   restart: unless-stopped
+  #   volumes:
+  #     - meilisearch-data:/data.ms
+
+volumes:
+  postgres_data:
+  # keykap-redis:
+  # meilisearch-data:

@@ -2,31 +2,46 @@
 
 ## Setup
 
-1. Install packages
+1. [Install packages](#install-packages)
+1. [Start containers in docker-compose](#start-containers-in-docker-compose)
+1. [Run migration if it is the first time](#run-migration-if-it-is-the-first-time)
+1. [Run seed](#run-seed)
+1. [Add admin email](#add-admin-email)
+1. [Start development](#start-development)
+
+### Install packages
 
 ```shell
 yarn install
 ```
 
-2. Start containers in docker-compose:
+### Start containers in docker-compose
 
 ```shell
 docker-compose up
 ```
 
-3. Run migration if it is the first time:
+### Run migration if it is the first time
 
 ```shell
 npx medusa migrations run
 ```
 
-4. Run seed:
+### Run seed
 
 ```shell
 yarn seed
 ```
 
-5. Start development:
+### Add admin email
+
+```shell
+npx medusa user -e admin@medusa-test.com -p supersecret
+```
+
+Use `http://localhost:9000/app` to access the admin dashboard.
+
+### Start development
 
 ```shell
 yarn dev

@@ -49,7 +49,7 @@ yarn dev
 
 ## Known Development Problems
 
-### PostgreSQL Database
+### PostgreSQL database
 
 You can close all the processes that are using PostgreSQL to avoid the following errors:
 
@@ -67,3 +67,34 @@ To kill those processes, use the following command:
 ```shell
 sudo kill -9 <PID>
 ```
+
+### Generating migration file
+
+#### Description
+
+When generating the migration file for your module, you can face the following error when running this command:
+
+```shell
+npx cross-env MIKRO_ORM_CLI=./src/modules/<YOUR_MODULE>/migrations-config.ts mikro-orm migration:create
+```
+
+```shell
+SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+```
+
+Related **MikroORM** Github Issue: [Mikro orm config error key is null#
+](https://github.com/mikro-orm/mikro-orm/issues/866#:~:text=template%20and%20reproduction.-,omdxp%20commented%20on%20Jan%2015%2C%202022,Or%20just%20use%20the%20ORM%20env%20var%2C%20which%20is%20MIKRO_ORM_PASSWORD.,-2)
+
+It seems the fix was adding `MIKRO_ORM_PASSWORD` (which is the db password); i.e., `supersecret`.
+
+Alternatively you can add `MIKRO_ORM_PASSWORD` to `.env` and in the `../migrations-config.ts` file load the envs with `loadEnv(process.env.NODE_ENV, process.cwd())`;
+
+#### Solution
+
+Use this command which uses `MIKRO_ORM_PASSWORD`:
+
+```shell
+npx cross-env MIKRO_ORM_PASSWORD=supersecret MIKRO_ORM_CLI=./src/modules/hello/migrations-config.ts mikro-orm migration:create;
+```
+
+See more in this discord conversation [MedusaV2 Migrations from Custom Modules Models Drop a Big Chunk of Database](https://discord.com/channels/876835651130097704/1259437635995172874)

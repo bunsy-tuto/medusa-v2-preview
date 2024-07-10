@@ -47,6 +47,100 @@ Use `http://localhost:9000/app` to access the admin dashboard.
 yarn dev
 ```
 
+## Authentication
+
+### Admin
+
+To login as an admin, you must follow these procedures:
+
+1. [authenticate with email password](#authenticate-with-email-password)
+1. [generate session cookie](#generate-session-cookie)
+1. [verify your login](#verify-your-login)
+
+#### Authenticate with email password
+
+```shell
+curl --location 'http://localhost:9000/auth/user/emailpass' \
+--header 'Connection: keep-alive' \
+--header 'Origin: http://localhost:9000' \
+--header 'accept: application/json' \
+--header 'content-type: application/json' \
+--data-raw '{
+    "email": "admin@medusa-test.com",
+    "password": "supersecret"
+}'
+```
+
+When calling the api, you will get:
+
+- token (denoted as `TOKEN_OF_USER_EMAILPASS_ABOVE`)
+
+If you run it successfully, you will get object like this:
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY3Rvcl9pZCI6InVzZXJfMDFKMkQ4QjBWOTVQNVFLQVIyNEtKNzAxNVQiLCJhY3Rvcl90eXBlIjoidXNlciIsImF1dGhfaWRlbnRpdHlfaWQiOiJhdXRoaWRfMDFKMkQ4QjBYWjdINFYwM1BHM0RWMjU2V0IiLCJhcHBfbWV0YWRhdGEiOnsidXNlcl9pZCI6InVzZXJfMDFKMkQ4QjBWOTVQNVFLQVIyNEtKNzAxNVQifSwiaWF0IjoxNzIwNTk5NDU3LCJleHAiOjE3MjA2ODU4NTd9.SL70IsCzxIsWuXxiBsBbuj0o4c7k3Pzclnoa1LHdx9Y"
+}
+```
+
+#### Generate session cookie
+
+This api needs the api key `TOKEN_OF_USER_EMAILPASS_ABOVE` from the previous api call.
+
+```shell
+curl --location --request POST 'http://localhost:9000/auth/session' \
+--header 'Connection: keep-alive' \
+--header 'Origin: http://localhost:9000' \
+--header 'accept: application/json' \
+--header 'authorization: Bearer <TOKEN_OF_USER_EMAILPASS_ABOVE>' \
+--header 'content-type: application/json' \
+```
+
+If you run it successfully, you will get an object like this:
+
+```json
+{
+  "user": {
+    "actor_id": "user_01J2D8B0V95P5QKAR24KJ7015T",
+    "actor_type": "user",
+    "auth_identity_id": "authid_01J2D8B0XZ7H4V03PG3DV256WB",
+    "app_metadata": {
+      "user_id": "user_01J2D8B0V95P5QKAR24KJ7015T"
+    },
+    "iat": 1720599358,
+    "exp": 1720685758
+  }
+}
+```
+
+#### Verify your login
+
+You can verify with `admin/users/me`.
+
+```shell
+curl --location 'http://localhost:9000/admin/users/me' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+```
+
+If you are successfully authenticated, you will see:
+
+```json
+{
+  "user": {
+    "id": "user_01J2D8B0V95P5QKAR24KJ7015T",
+    "first_name": null,
+    "last_name": null,
+    "email": "admin@medusa-test.com",
+    "avatar_url": null,
+    "metadata": null,
+    "created_at": "2024-07-10T02:42:39.593Z",
+    "updated_at": "2024-07-10T02:42:39.593Z",
+    "deleted_at": null
+  }
+}
+```
+
 ## Known Development Problems
 
 ### PostgreSQL database
@@ -101,4 +195,4 @@ See more in this discord conversation [MedusaV2 Migrations from Custom Modules M
 
 ### DBeaver CC
 
-When you connect to your database and see no database there, you should *tick* the `show all database option`. For more info, follow this [link](https://stackoverflow.com/questions/54235029/dbeaver-can-only-see-default-postgresql-database-in-connection#:~:text=25-,2024%20solution,-They%20moved%20it).
+When you connect to your database and see no database there, you should _tick_ the `show all database option`. For more info, follow this [link](https://stackoverflow.com/questions/54235029/dbeaver-can-only-see-default-postgresql-database-in-connection#:~:text=25-,2024%20solution,-They%20moved%20it).

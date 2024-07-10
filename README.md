@@ -98,3 +98,7 @@ npx cross-env MIKRO_ORM_PASSWORD=supersecret MIKRO_ORM_CLI=./src/modules/hello/m
 ```
 
 See more in this discord conversation [MedusaV2 Migrations from Custom Modules Models Drop a Big Chunk of Database](https://discord.com/channels/876835651130097704/1259437635995172874)
+
+### DBeaver CC
+
+When you connect to your database and see no database there, you should *tick* the `show all database option`. For more info, follow this [link](https://stackoverflow.com/questions/54235029/dbeaver-can-only-see-default-postgresql-database-in-connection#:~:text=25-,2024%20solution,-They%20moved%20it).

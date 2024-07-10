@@ -46,6 +46,7 @@
     "@medusajs/tax": "preview",
     "@medusajs/user": "preview",
     "@medusajs/workflow-engine-inmemory": "preview",
+    "cors": "^2.8.5",
     "express": "^4.17.2"
   },
   "devDependencies": {

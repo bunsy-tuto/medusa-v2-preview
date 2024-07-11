@@ -1,9 +1,9 @@
 import {
-  MedusaRequest,
-  MedusaNextFunction,
-  MiddlewaresConfig,
-  MedusaResponse,
   authenticate,
+  MedusaNextFunction,
+  MedusaRequest,
+  MedusaResponse,
+  MiddlewaresConfig,
 } from "@medusajs/medusa";
 import { ConfigModule } from "@medusajs/types";
 import { parseCorsOrigins } from "@medusajs/utils";

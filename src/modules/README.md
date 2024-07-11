@@ -13,7 +13,7 @@ For example, create the file `src/modules/hello/service.ts` with the following c
 ```ts title="src/modules/hello/service.ts"
 export default class HelloModuleService {
   getMessage() {
-    return "Hello, world!"
+    return "Hello, world!";
   }
 }
 ```
@@ -25,12 +25,13 @@ A module must have an `index.ts` file in its root directory that exports its def
 For example, create the file `src/modules/hello.index.ts` with the following content:
 
 ```ts title="src/modules/hello.index.ts" highlights={[["4", "", "The main service of the module."]]}
-import HelloModuleService from "./service"
-import { Module } from "@medusajs/utils"
+import { Module } from "@medusajs/utils";
+
+import HelloModuleService from "./service";
 
 export default Module("hello", {
   service: HelloModuleService,
-})
+});
 ```
 
 ## 3. Add Module to Configurations
@@ -47,7 +48,7 @@ module.exports = defineConfig({
       resolve: "./modules/hello",
     },
   },
-})
+});
 ```
 
 Its key (`helloModuleService`) is the name of the module’s main service. It will be registered in the Medusa container with that name.
@@ -57,19 +58,19 @@ Its key (`helloModuleService`) is the name of the module’s main service. It wi
 You can resolve the main service of the module in other resources, such as an API route:
 
 ```ts
-import { MedusaRequest, MedusaResponse } from "@medusajs/medusa"
-import HelloModuleService from "../../../modules/hello/service"
+import { MedusaRequest, MedusaResponse } from "@medusajs/medusa";
+
+import HelloModuleService from "../../../modules/hello/service";
 
 export async function GET(
   req: MedusaRequest,
-  res: MedusaResponse
+  res: MedusaResponse,
 ): Promise<void> {
-  const helloModuleService: HelloModuleService = req.scope.resolve(
-    "helloModuleService"
-  )
+  const helloModuleService: HelloModuleService =
+    req.scope.resolve("helloModuleService");
 
   res.json({
     message: helloModuleService.getMessage(),
-  })
+  });
 }
 ```

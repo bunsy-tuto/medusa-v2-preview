@@ -22,23 +22,23 @@ import {
 } from "@medusajs/types";
 import {
   ContainerRegistrationKeys,
+  ModuleRegistrationName,
   Modules,
   ProductStatus,
-  ModuleRegistrationName
 } from "@medusajs/utils";
 
 export default async function seedDemoData({ container }: ExecArgs) {
   const logger: Logger = container.resolve(ContainerRegistrationKeys.LOGGER);
   const remoteLink: RemoteLink = container.resolve(
-    ContainerRegistrationKeys.REMOTE_LINK
+    ContainerRegistrationKeys.REMOTE_LINK,
   );
   const fulfillmentModuleService: IFulfillmentModuleService = container.resolve(
-    ModuleRegistrationName.FULFILLMENT
+    ModuleRegistrationName.FULFILLMENT,
   );
   const salesChannelModuleService: ISalesChannelModuleService =
     container.resolve(ModuleRegistrationName.SALES_CHANNEL);
   const storeModuleService: IStoreModuleService = container.resolve(
-    ModuleRegistrationName.STORE
+    ModuleRegistrationName.STORE,
   );
 
   const countries = ["gb", "de", "dk", "se", "fr", "es", "it"];
@@ -52,7 +52,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
   if (!defaultSalesChannel.length) {
     // create the default sales channel
     const { result: salesChannelResult } = await createSalesChannelsWorkflow(
-      container
+      container,
     ).run({
       input: {
         salesChannelsData: [
@@ -244,7 +244,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
 
   logger.info("Seeding stock location data...");
   const { result: stockLocationResult } = await createStockLocationsWorkflow(
-    container
+    container,
   ).run({
     input: {
       locations: [
@@ -280,7 +280,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
 
   logger.info("Seeding publishable API key data...");
   const { result: publishableApiKeyResult } = await createApiKeysWorkflow(
-    container
+    container,
   ).run({
     input: {
       api_keys: [
@@ -305,7 +305,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
   logger.info("Seeding product data...");
 
   const { result: categoryResult } = await createProductCategoriesWorkflow(
-    container
+    container,
   ).run({
     input: {
       product_categories: [

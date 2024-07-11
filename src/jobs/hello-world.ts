@@ -1,11 +1,11 @@
-import { ModuleRegistrationName } from "@medusajs/utils";
-import { IProductModuleService } from "@medusajs/types";
 import { MedusaContainer } from "@medusajs/medusa";
+import { IProductModuleService } from "@medusajs/types";
+import { ModuleRegistrationName } from "@medusajs/utils";
 
 // the scheduled-job function
 export default async function (container: MedusaContainer) {
   const productModuleService: IProductModuleService = container.resolve(
-    ModuleRegistrationName.PRODUCT
+    ModuleRegistrationName.PRODUCT,
   );
 
   const [, count] = await productModuleService.listAndCountProducts();

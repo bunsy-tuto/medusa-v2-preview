@@ -1,7 +1,7 @@
 import {
   createStep,
-  StepResponse,
   createWorkflow,
+  StepResponse,
 } from "@medusajs/workflows-sdk";
 
 type WorkflowInput = {
@@ -28,7 +28,7 @@ const myWorkflow = createWorkflow<WorkflowInput, WorkflowOutput>(
     const str2 = step2(input);
 
     return { message: str2 };
-  }
+  },
 );
 
 export default myWorkflow;

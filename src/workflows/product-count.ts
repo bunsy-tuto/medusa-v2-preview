@@ -2,8 +2,8 @@ import { IProductModuleService } from "@medusajs/types";
 import { ModuleRegistrationName } from "@medusajs/utils";
 import {
   createStep,
-  StepResponse,
   createWorkflow,
+  StepResponse,
 } from "@medusajs/workflows-sdk";
 
 type ProductCountWorkflowOutput = {
@@ -12,7 +12,7 @@ type ProductCountWorkflowOutput = {
 
 const step1 = createStep("step-1", async (_, context) => {
   const productModuleService: IProductModuleService = context.container.resolve(
-    ModuleRegistrationName.PRODUCT
+    ModuleRegistrationName.PRODUCT,
   );
 
   const [, count] = await productModuleService.listAndCountProducts();

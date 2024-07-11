@@ -1,6 +1,6 @@
+import { SubscriberArgs, SubscriberConfig } from "@medusajs/medusa";
 import { IProductModuleService } from "@medusajs/types";
 import { ModuleRegistrationName } from "@medusajs/utils";
-import { SubscriberArgs, SubscriberConfig } from "@medusajs/medusa";
 
 // subscriber function
 export default async function productCreateHandler({
@@ -10,7 +10,7 @@ export default async function productCreateHandler({
   console.log("A product was created");
 
   const productModuleService: IProductModuleService = container.resolve(
-    ModuleRegistrationName.PRODUCT
+    ModuleRegistrationName.PRODUCT,
   );
 
   const productId = "data" in data ? data.data.id : data.id;

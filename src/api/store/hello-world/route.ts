@@ -10,7 +10,7 @@ export const GET = (req: MedusaRequest, res: MedusaResponse) => {
 
 export const POST = (
   req: MedusaRequest<HelloWorldReq>,
-  res: MedusaResponse
+  res: MedusaResponse,
 ) => {
   const { name } = req.body;
 

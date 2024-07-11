@@ -83,26 +83,22 @@ For example, if you want to define a route that takes both a `productId` and a `
 The Medusa container is available on `req.scope`. Use it to access modules' main services and other registered resources:
 
 ```ts
-import type {
-  MedusaRequest,
-  MedusaResponse,
-} from "@medusajs/medusa"
-import { IProductModuleService } from "@medusajs/types"
-import { ModuleRegistrationName } from "@medusajs/modules-sdk"
+import { ModuleRegistrationName } from "@medusajs/modules-sdk";
+import { IProductModuleService } from "@medusajs/types";
 
-export const GET = async (
-  req: MedusaRequest,
-  res: MedusaResponse
-) => {
-  const productModuleService: IProductModuleService =
-    req.scope.resolve(ModuleRegistrationName.PRODUCT)
+import type { MedusaRequest, MedusaResponse } from "@medusajs/medusa";
 
-  const [, count] = await productModuleService.listAndCount()
+export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
+  const productModuleService: IProductModuleService = req.scope.resolve(
+    ModuleRegistrationName.PRODUCT,
+  );
+
+  const [, count] = await productModuleService.listAndCount();
 
   res.json({
     count,
-  })
-}
+  });
+};
 ```
 
 ## Middleware
@@ -113,16 +109,16 @@ For example, if you want to apply a custom middleware function to the `/store/cu
 
 ```ts
 import type {
-  MiddlewaresConfig,
+  MedusaNextFunction,
   MedusaRequest,
   MedusaResponse,
-  MedusaNextFunction,
+  MiddlewaresConfig,
 } from "@medusajs/medusa";
 
 async function logger(
   req: MedusaRequest,
   res: MedusaResponse,
-  next: MedusaNextFunction
+  next: MedusaNextFunction,
 ) {
   console.log("Request received");
   next();

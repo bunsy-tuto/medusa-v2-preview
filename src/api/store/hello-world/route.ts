@@ -1,11 +1,17 @@
+import { HELLO_MODULE } from "../../../modules/hello";
+
 import type { MedusaRequest, MedusaResponse } from "@medusajs/medusa";
 
 type HelloWorldReq = {
   name: string;
 };
 
-export const GET = (req: MedusaRequest, res: MedusaResponse) => {
-  res.json({ message: "[GET] Hello, world!" });
+export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
+  const helloModuleService = req.scope.resolve(HELLO_MODULE);
+
+  const myCustoms = await helloModuleService.listMyCustoms();
+
+  res.json({ message: "[GET] Hello, world!", myCustoms });
 };
 
 export const POST = (

@@ -1,5 +1,7 @@
 import { defineConfig, loadEnv } from "@medusajs/utils";
 
+import { HELLO_MODULE } from "./src/modules/hello";
+
 loadEnv(process.env.NODE_ENV, process.cwd());
 
 module.exports = defineConfig({
@@ -14,8 +16,11 @@ module.exports = defineConfig({
     },
   },
   modules: {
-    helloModuleService: {
+    [HELLO_MODULE]: {
       resolve: "./modules/hello",
+      definition: {
+        isQueryable: true,
+      },
     },
   },
 });

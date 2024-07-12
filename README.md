@@ -52,6 +52,14 @@ This command will start docker compose and medusa server and admin dashboard.
 - medusa server is accessible at `localhost:9000`
 - medusa admin dashboard is accessible at `localhost:9000/app`
 
+### Update migration file to reflect your model
+
+After adding/changing your model, you can run the following command to generate a new migration file:
+
+```shell
+npx cross-env MIKRO_ORM_CLI=./src/modules/<YOUR_MODULE>/migrations-config.ts mikro-orm migration:create
+```
+
 ## Authentication
 
 ### Admin
@@ -207,6 +215,7 @@ When you connect to your database and see no database there, you should _tick_ t
 This project uses this [JS/TS - React - Catppuccin](https://vscode.dev/profile/github/35a0b8a1e4e0bcfe3f7c341a60fbebe2) profile.
 
 Some bad extensions of this profile were uninstalled:
+
 - Codiumate - ~140MB RAM usage
 - Console Ninja - ~80MB RAM usage
 - ESLint - ~91MB RAM usage

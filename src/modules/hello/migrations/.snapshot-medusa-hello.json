@@ -1,5 +1,7 @@
 {
-  "namespaces": ["public"],
+  "namespaces": [
+    "public"
+  ],
   "name": "public",
   "tables": [
     {
@@ -21,6 +23,87 @@
           "primary": false,
           "nullable": false,
           "mappedType": "text"
+        },
+        "age": {
+          "name": "age",
+          "type": "integer",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "0",
+          "mappedType": "integer"
+        },
+        "price": {
+          "name": "price",
+          "type": "numeric",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "999.99",
+          "mappedType": "decimal"
+        },
+        "has_account": {
+          "name": "has_account",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "false",
+          "mappedType": "boolean"
+        },
+        "color": {
+          "name": "color",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "'white'",
+          "enumItems": [
+            "black",
+            "white"
+          ],
+          "mappedType": "enum"
+        },
+        "date_of_birth": {
+          "name": "date_of_birth",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "json"
+        },
+        "names": {
+          "name": "names",
+          "type": "text[]",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "array"
+        },
+        "raw_price": {
+          "name": "raw_price",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "json"
         },
         "created_at": {
           "name": "created_at",
@@ -60,7 +143,9 @@
       "indexes": [
         {
           "keyName": "my_custom_pkey",
-          "columnNames": ["id"],
+          "columnNames": [
+            "id"
+          ],
           "composite": false,
           "primary": true,
           "unique": true

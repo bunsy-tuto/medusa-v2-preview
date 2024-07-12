@@ -201,3 +201,13 @@ See more in this discord conversation [MedusaV2 Migrations from Custom Modules M
 ### DBeaver CC
 
 When you connect to your database and see no database there, you should _tick_ the `show all database option`. For more info, follow this [link](https://stackoverflow.com/questions/54235029/dbeaver-can-only-see-default-postgresql-database-in-connection#:~:text=25-,2024%20solution,-They%20moved%20it).
+
+## VSCode settings and extensions
+
+This project uses this [JS/TS - React - Catppuccin](https://vscode.dev/profile/github/35a0b8a1e4e0bcfe3f7c341a60fbebe2) profile.
+
+Some bad extensions of this profile were uninstalled:
+- Codiumate - ~140MB RAM usage
+- Console Ninja - ~80MB RAM usage
+- ESLint - ~91MB RAM usage
+- i18n Ally - ~185MB RAM usage

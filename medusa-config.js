@@ -21,6 +21,9 @@ module.exports = defineConfig({
       definition: {
         isQueryable: true,
       },
+      options: {
+        capitalize: true,
+      },
     },
   },
 });

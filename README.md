@@ -47,6 +47,11 @@ Use `http://localhost:9000/app` to access the admin dashboard.
 yarn dev
 ```
 
+This command will start docker compose and medusa server and admin dashboard.
+
+- medusa server is accessible at `localhost:9000`
+- medusa admin dashboard is accessible at `localhost:9000/app`
+
 ## Authentication
 
 ### Admin

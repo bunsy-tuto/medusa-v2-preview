@@ -16,7 +16,8 @@
     "build": "medusa build",
     "seed": "medusa exec ./src/scripts/seed.ts",
     "start": "medusa start",
-    "dev": "medusa develop",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"docker,medusa\" -c \"yellow.bold,green.bold\" \"docker-compose up\" \"yarn dev:medusa\"",
+    "dev:medusa": "medusa develop",
     "lint": "eslint src/**/*.ts --quiet --fix",
     "prettier:format": "prettier . --write --cache"
   },
@@ -67,6 +68,7 @@
     "@types/react": "^18.3.2",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
+    "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "eslint": "^9.6.0",
     "eslint-config-prettier": "^9.1.0",

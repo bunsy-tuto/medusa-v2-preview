@@ -4,5 +4,5 @@
   "git.ignoreLimitWarning": true,
   "prettier.configPath": "prettier.config.js",
   "typescript.preferences.importModuleSpecifier": "relative",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
 }

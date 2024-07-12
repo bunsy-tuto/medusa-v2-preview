@@ -1,2 +1,15 @@
 build
 coverage
+node_modules
+
+.DS_Store
+
+yarn.lock
+
+.eslintcache
+
+.idea
+.turbo
+build/**
+**/dist
+**/stats

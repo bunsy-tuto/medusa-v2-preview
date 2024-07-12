@@ -1,5 +1,5 @@
 /** @type {import("prettier").Config} */
-export default {
+module.exports = {
   arrowParens: "always",
   endOfLine: "auto",
   semi: true,

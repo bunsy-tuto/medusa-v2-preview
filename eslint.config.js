@@ -1,3 +1,3 @@
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+const eslintPluginPrettierRecommended = require("eslint-plugin-prettier/recommended");
 
-export default [eslintPluginPrettierRecommended];
+module.exports = [eslintPluginPrettierRecommended];

@@ -43,6 +43,15 @@ Use `http://localhost:9000/app` to access the admin dashboard.
 
 ### Start development
 
+If you run **docker** and **medusa service** separately, you should use these 2 commands:
+
+```shell
+docker-compose up -d
+yarn dev:medusa
+```
+
+else if you want to run both **docker** and **medusa server** concurrently, you run this command:
+
 ```shell
 yarn dev
 ```
@@ -58,6 +67,12 @@ After adding/changing your model, you can run the following command to generate 
 
 ```shell
 npx cross-env MIKRO_ORM_CLI=./src/modules/<YOUR_MODULE>/migrations-config.ts mikro-orm migration:create
+```
+
+Then, you can run the migrations:
+
+```shell
+npx medusa migrations run
 ```
 
 ## Authentication

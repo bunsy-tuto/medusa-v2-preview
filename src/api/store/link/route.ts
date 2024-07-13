@@ -16,7 +16,16 @@ export const POST = async (
     ContainerRegistrationKeys.REMOTE_LINK,
   );
 
-  await remoteLink.create({
+  // await remoteLink.create({
+  //   [HELLO_MODULE]: {
+  //     my_custom_id: "01J2JSG3MTRPQ8ACXZPS7EAEYT",
+  //   },
+  //   [Modules.PRODUCT]: {
+  //     product_id: "prod_01J2BXD0ZH1ADJ4YRS11T59N6Y",
+  //   },
+  // });
+
+  await remoteLink.dismiss({
     [HELLO_MODULE]: {
       my_custom_id: "01J2JSG3MTRPQ8ACXZPS7EAEYT",
     },

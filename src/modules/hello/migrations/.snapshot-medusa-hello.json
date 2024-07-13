@@ -30,19 +30,8 @@
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
-          "nullable": false,
-          "default": "0",
+          "nullable": true,
           "mappedType": "integer"
-        },
-        "price": {
-          "name": "price",
-          "type": "numeric",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "default": "999.99",
-          "mappedType": "decimal"
         },
         "has_account": {
           "name": "has_account",
@@ -74,7 +63,7 @@
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
-          "nullable": false,
+          "nullable": true,
           "length": 6,
           "mappedType": "datetime"
         },
@@ -84,7 +73,7 @@
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
-          "nullable": false,
+          "nullable": true,
           "mappedType": "json"
         },
         "names": {
@@ -93,17 +82,8 @@
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
-          "nullable": false,
+          "nullable": true,
           "mappedType": "array"
-        },
-        "raw_price": {
-          "name": "raw_price",
-          "type": "jsonb",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "mappedType": "json"
         },
         "created_at": {
           "name": "created_at",

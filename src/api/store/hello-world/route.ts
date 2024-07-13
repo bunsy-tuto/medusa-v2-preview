@@ -9,7 +9,11 @@ type HelloWorldReq = {
 export const GET = async (req: MedusaRequest, res: MedusaResponse) => {
   const helloModuleService = req.scope.resolve(HELLO_MODULE);
 
-  const myCustoms = await helloModuleService.listMyCustoms();
+  const myCustoms = await helloModuleService.createMyCustoms([
+    {
+      name: "test 4",
+    },
+  ]);
 
   res.json({ message: "[GET] Hello, world!", myCustoms });
 };

@@ -10,7 +10,7 @@ export default async function (container: MedusaContainer) {
 
   const [, count] = await productModuleService.listAndCountProducts();
 
-  console.log(`Currently, you have ${count} product(s)`);
+  console.log(`[Jobs] Currently, you have ${count} product(s)`);
 }
 
 // the job's configurations

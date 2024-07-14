@@ -1,10 +1,12 @@
 import { defineWidgetConfig } from "@medusajs/admin-shared";
+import { AdminProduct, DetailWidgetProps } from "@medusajs/types";
+import { Container, Heading } from "@medusajs/ui";
 
-const ProductWidget = () => {
+const ProductWidget = ({ data }: DetailWidgetProps<AdminProduct>) => {
   return (
-    <div>
-      <h2>Product Widget</h2>
-    </div>
+    <Container>
+      <Heading level="h2">Product Widget {data.title}</Heading>
+    </Container>
   );
 };
 

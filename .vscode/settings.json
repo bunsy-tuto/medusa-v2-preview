@@ -1,11 +1,11 @@
 {
+  "cSpell.words": [
+    "medusajs"
+  ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "git.ignoreLimitWarning": true,
   "prettier.configPath": "prettier.config.js",
   "typescript.preferences.importModuleSpecifier": "relative",
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": [
-    "medusajs"
-  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

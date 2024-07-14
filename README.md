@@ -75,6 +75,17 @@ Then, you can run the migrations:
 npx medusa migrations run
 ```
 
+## _Note_
+
+To ensure an upgrade to a new version is completely correct, run the following sequence of commands:
+
+```shell
+rm -rf node_modules
+rm yarn.lock // or package-lock.json
+
+yarn // If you are using yarn berry, you need to create the lock-file first
+```
+
 ## Authentication
 
 ### Admin

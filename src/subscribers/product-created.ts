@@ -7,7 +7,7 @@ export default async function productCreateHandler({
   data,
   container,
 }: SubscriberArgs<{ id: string }>) {
-  console.log("A product was created");
+  console.log("[Subscriber::ProductCreateHandler] A product was created");
 
   const productModuleService: IProductModuleService = container.resolve(
     ModuleRegistrationName.PRODUCT,

@@ -5,4 +5,7 @@
   "prettier.configPath": "prettier.config.js",
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.words": [
+    "medusajs"
+  ],
 }
